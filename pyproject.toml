@@ -1,0 +1,23 @@
+[project]
+name = "qp-tls-losses"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "sdanilin-oqc",email = "sdanilin@oqc.tech"}
+]
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "jupyter (>=1.1.1,<2.0.0)",
+    "numpy (>=2.4.0,<3.0.0)",
+    "scipy (>=1.16.3,<2.0.0)",
+    "matplotlib (>=3.10.8,<4.0.0)"
+]
+
+[tool.poetry]
+packages = [{include = "qp_tls_losses", from = "src"}]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
