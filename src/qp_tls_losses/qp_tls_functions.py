@@ -4,13 +4,12 @@ from scipy.constants import hbar, k
 from scipy.special import k0
 
 
-def tls_loss(n,T,Q0,b1,b2,D,f):
-    return math.tanh(hbar * 2 * np.pi * f / 2 / k / T) / Q0 / np.sqrt(1+(n**b2/D/T**b1)*math.tanh(hbar*2*np.pi*f/2/k/T))
+def tls_loss(n,T,Q0,b2,nc,f):
+    return np.tanh(hbar * 2 * np.pi * f / 2 / k / T) / Q0 / np.sqrt(1+(n/nc)**b2*np.tanh(hbar*2*np.pi*f/2/k/T))
 
 
 def qp_loss(t,a0,sat_temp,n,tc,f):
-    t1=t_qp_t(t,sat_temp,n)
-    return math.sinh(hbar*2*np.pi*f/2/k/t1)*k0(hbar*2*np.pi*f/2/k/t1)/a0/np.exp(1.764*tc/t1)
+    return np.sinh(hbar*2*np.pi*f/2/k/t_qp_t(t,sat_temp,n))*k0(hbar*2*np.pi*f/2/k/t_qp_t(t,sat_temp,n))/a0/np.exp(1.764*tc/t_qp_t(t,sat_temp,n))
 
 
 def t_qp_approx(x, tr_temp, sat_temp, s):
